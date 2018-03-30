@@ -1,6 +1,7 @@
 console.log('My game')
 
-
+let time = 0;
+let timer;
 $('#name').on('click', (event) => {
 	console.log('Hello')
 	const changeName = $('input').val();
@@ -8,27 +9,51 @@ $('#name').on('click', (event) => {
 	//$('#display').empty();
 	$('#display').text(changeName);
 	
-	//this.name = changeName;
-})
-$('#wordBox').on('click', (event) => {
-	console.log('respuesta')
-	const wordAnswer = $('input').val();
 	
-	$('#wordBox').empty();
-	$('#wordBox').text(wordAnswer);
-	
-	//this.name = changeName;
 })
+
 const arrayOfWords = ['yellow', 'one', 'three', 'apple', 'the',
- 'array', 'house', 'pizza', 'tea', 'thirteen', 'monkey', 'banana', 'awesome', 'incredicle', 
+ 'array', 'house', 'pizza', 'tea', 'thirteen', 'monkey', 'banana', 'awesome', 'incredible', 
  ' strengths', 'a', 'cat', 'tiger', 'elephant', 'dinosaur', 'day', 'is', 'good', 'so',
 'some', 'something', 'sound', 'still', 'such', 'take', 'tell', 'than'];
 console.log(arrayOfWords);
 
-const word = arrayOfWords[Math.floor(Math.random() * arrayOfWords.length)];
-console.log(word);
-const box = $('#wordBox')
-box.text(word)
+// let word = arrayOfWords[Math.floor(Math.random() * arrayOfWords.length)];
+
+
+
+const printAnswer = () => {
+	const word = arrayOfWords[Math.floor(Math.random() * arrayOfWords.length)];
+	const box = $('#wordBox')
+	box.text(word)	
+
+
+
+	// slice whatever word you got out of the arrayOfWords
+}
+
+printAnswer();
+
+$('#answer').on('click', (event) => {//this gets the input 
+	event.preventDefault();//this prevents it 
+	console.log('response')
+	const wordAnswer = $('input').val();
+	
+	// $('#wordBox').empty();
+	if($('#wordBox').text() === wordAnswer) {//if the word given is the same
+	// as what the player types
+		//do code for getting it right
+		
+		alert('match');//this will pop an alert if you get it right
+		printAnswer();
+		$('input').val('');///this will change the input value to null
+	
+
+	}else {
+		alert('game over');
+	}
+
+	})
 
 // window.addEventListener("keydown", function(event) {
 
@@ -41,21 +66,24 @@ const setTimer = () => {
     time++
     console.log( time + ' timer is running')
     
-    //   shadow.age++;
+      // word++;
     
-    // if(time === 10 || 12){
-    // 	shadow.age++
-    // 	printInfo();
-    // }
-    // if(time === 20){
-    // 	clearInterval(timer)
-    // }
+    if(time === 10){
+    	// word++
+    	printAnswer();
+    }
+    if(time === 15){
+    	clearInterval(timer)
+    }
     
   }, 1000);
 
 };
+setTimer();
 
-
+const timing = $('#time')
+timing.text(setTimer);
+	
 // window.addEventListener("keydown", function(event) {
 //   let str = "KeyboardEvent: key='" + event.key + "' | code='" +
 //             event.code + "'";
