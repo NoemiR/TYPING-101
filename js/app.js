@@ -2,6 +2,11 @@ console.log('My game')
 
 let time = 0;
 let timer;
+
+// let round = 1;
+
+
+
 $('#name').on('click', (event) => {
 	console.log('Hello')
 	const changeName = $('input').val();
@@ -12,6 +17,8 @@ $('#name').on('click', (event) => {
 	
 })
 
+
+
 const arrayOfWords = ['yellow', 'one', 'three', 'apple', 'the',
  'array', 'house', 'pizza', 'tea', 'thirteen', 'monkey', 'banana', 'awesome', 'incredible', 
  ' strengths', 'a', 'cat', 'tiger', 'elephant', 'dinosaur', 'day', 'is', 'good', 'so',
@@ -19,46 +26,34 @@ const arrayOfWords = ['yellow', 'one', 'three', 'apple', 'the',
 console.log(arrayOfWords);
 
 // let word = arrayOfWords[Math.floor(Math.random() * arrayOfWords.length)];
-
-
-
-const printAnswer = () => {
+const getWord = () => {
 	const word = arrayOfWords[Math.floor(Math.random() * arrayOfWords.length)];
-	const box = $('#wordBox')
-	box.text(word)	
-
-
-
+	let box = $('#wordBox')
+	box.text(word);
+	console.log(word)
+	///this will change the input value to null
 	// slice whatever word you got out of the arrayOfWords
-}
+	const wordCount = $('#wordBox').val().length;
+	console.log(wordCount);
+};
 
-printAnswer();
+getWord();
 
 $('#answer').on('click', (event) => {//this gets the input 
 	event.preventDefault();//this prevents it 
 	console.log('response')
-	const wordAnswer = $('input').val();
-	
-	// $('#wordBox').empty();
+	const wordAnswer = $('#answerText').val();
+	console.log(wordAnswer);
+	$('.respuesta').text(wordAnswer);
+	console.log(wordAnswer);
 	if($('#wordBox').text() === wordAnswer) {//if the word given is the same
-	// as what the player types
-		//do code for getting it right
-		
-		alert('match');//this will pop an alert if you get it right
-		printAnswer();
-		$('input').val('');///this will change the input value to null
-	
-
+	alert('match');//this will pop an alert if you get it right
+		getWord();	
 	}else {
-		alert('game over');
+		alert("you got it wrong")
+		getWord();
 	}
-
-	})
-
-// window.addEventListener("keydown", function(event) {
-
-// }
-
+})
 
 const setTimer = () => {
 	
@@ -70,7 +65,7 @@ const setTimer = () => {
     
     if(time === 10){
     	// word++
-    	printAnswer();
+    	getWord();
     }
     if(time === 15){
     	clearInterval(timer)
@@ -81,14 +76,16 @@ const setTimer = () => {
 };
 setTimer();
 
-const timing = $('#time')
-timing.text(setTimer);
+
 	
-// window.addEventListener("keydown", function(event) {
-//   let str = "KeyboardEvent: key='" + event.key + "' | code='" +
-//             event.code + "'";
-//   let el = document.createElement("span");
-//   el.innerHTML = str + "<br/>";
- 
-//   document.getElementById("output").appendChild(el);
-// }, true);
+	// $('#wordBox').empty();
+// make counter to keep track of how many words so far
+
+// each time you get aword 
+	// if the counter is 10
+		// next round
+	//otherwise increment the counter
+		// get the next word (what you already have)
+///keep track of thw word
+//point at
+
