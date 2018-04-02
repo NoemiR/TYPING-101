@@ -31,9 +31,11 @@ const getWord = () => {
 
 	// get the correct array for this round
 	const roundArray = words[nextRound];
+	console.log(roundArray)
 
 	// get random word from that array
  	const word = roundArray[Math.floor(Math.random() * roundArray.length)] 	
+ 	console.log(word)
 
 
   	let box = $('#wordBox')
@@ -48,8 +50,11 @@ const getWord = () => {
 	if(points === 10){
 		// tell user they won (html/jq)
 		nextRound++
+		$('#rounds').text('Round: ' + nextRound)
+		console.log(nextRound)
 	} else {
 		// start this round over
+		$('#rounds').val('')
 			// 
 			//
 	}
