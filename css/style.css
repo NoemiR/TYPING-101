@@ -5,15 +5,17 @@ body {
 	color: white;
 }
 h1 {
-	font-size: 70px;
+	font-size: 60px;
 	text-align: center;
 	color: #f1f1f1;
 }
 #display {
+	text-align: right;
 	color: #f1f1f1;
 	background: rgba(0, 0, 0, 0.5);
+	font-size: 45px;
 	/*background: rgb(241, 244, 66);*/
-	position: absolute;
+	/*position: absolute;*/
 	
 }
 .container {
@@ -22,15 +24,15 @@ h1 {
     /*margin: 0 auto; *//* Center it */
     /*display: inline-block;*/ 
 }
-.container .content {
+.content {
     /*position: absolute;  Position the background text */
     bottom: 0; /* At the bottom. Use top:0 to append it to the top */
     background: rgba(0, 0, 0, 0.5); /* Black background with 0.5 opacity */
     color: #f1f1f1; /* Grey text */
     width: 100%; /* Full width */
     padding: 20px; /* Some padding */
-   /* display: inline-block;*/	
-
+   /* display: inline-block;*/
+ text-align: center;
 }
 #wordBox {
 	font-size: 45px;
