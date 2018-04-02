@@ -1,96 +1,126 @@
 console.log('My game')
 
-let time = 0;
+let time = 60;
 let timer;
 let wordCount = 0;
-let nextRound = 1;
+let points = 0;
+
+// this keeps track of which we are on
+let nextRound = 0;
 
 // let round = 1;
 $('#name').on('click', (event) => {
 	event.preventDefault();
+	// $('#name').effect('explode');
 	console.log('Hello')
 	const changeName = $('input').val();
 	//$('#display').empty();
 	$('#display').text(changeName);	
 })
+const words = [
+ 	['yellow', 'one', 'three', 'apple', 'the', 'array', 'house', 'pizza', 'tea', 'thirteen', 'monkey', 'banana', 'awesome', 'incredible', ' strengths', 'a', 'cat', 'tiger', 'elephant', 'dinosaur', 'day', 'is', 'good', 'so', 'some', 'something', 'sound', 'still', 'such', 'take', 'tell', 'than'],
+ 	['worksheet', 'printing', 'vocabulary', 'triangle', 'rhyming', 'examples', 'dictionary', 'pictures', 'poems', 'selections'],
+	['round3test1', 'round3test2', 'round3test3'],
+	['round4test1', 'round4test2', 'round4test3']
+] 
 
-const arrayOfWords = ['yellow', 'one', 'three', 'apple', 'the',
- 'array', 'house', 'pizza', 'tea', 'thirteen', 'monkey', 'banana', 'awesome', 'incredible', 
- ' strengths', 'a', 'cat', 'tiger', 'elephant', 'dinosaur', 'day', 'is', 'good', 'so',
-'some', 'something', 'sound', 'still', 'such', 'take', 'tell', 'than'];
-console.log(arrayOfWords);
 
-// let word = arrayOfWords[Math.floor(Math.random() * arrayOfWords.length)];
+
+// let word = roundOneWords[Math.floor(Math.random() * roundOneWords.length)];
 const getWord = () => {
-	const word = arrayOfWords[Math.floor(Math.random() * arrayOfWords.length)];
-	let box = $('#wordBox')
-	box.text(word);
-	console.log(word)
-	///this will change the input value to null
-	// slice whatever word you got out of the arrayOfWords
-		
 
+	// get the correct array for this round
+	const roundArray = words[nextRound];
+
+	// get random word from that array
+ 	const word = roundArray[Math.floor(Math.random() * roundArray.length)] 	
+
+
+  	let box = $('#wordBox')
+  	box.text(word);
+  	console.log(word)
+	///this will change the input value to null
+	// slice whatever word you got out of the roundOneWords
 	if(wordCount < 10){
 		wordCount++;
 		console.log(wordCount);
+	} 
+	if(points === 10){
+		// tell user they won (html/jq)
+		nextRound++
 	} else {
-		nextRound++;
-		wordCount = 0;
+		// start this round over
+			// 
+			//
 	}
-
-
-
-
-
-
-
-
-
-
-
-};
+  	
+}
 
 getWord();
 
 $('#answer').on('click', (event) => {//this gets the input 
 	event.preventDefault();//this prevents it 
-	console.log('response')
-	const wordAnswer = $('#answerText').val();
+	console.log('response');
 
-	console.log(wordAnswer);
+	const wordAnswer = $('#answerText').val();
+	
+
 	$('#answerText').text(wordAnswer);
 	console.log(wordAnswer);
 
 	if($('#wordBox').text() === wordAnswer) {//if the word given is the same
-		alert('match');//this will pop an alert if you get it right
+		points++;
+		// print points in html
+		$('#score').text("Points: " + points)
+		console.log(points)
+		console.log('match');//this will pop an alert if you get it right
 		getWord();	
 		// we can clear out the input
 		$('#answerText').val('')
-	}else {
-		alert("you got it wrong")
+	} else {
+		points--;
+		$('#score').text("Points: " + points)
+		// print points in html
+		console.log(points)
+		alert("keep trying")
 		getWord();
+		$('#answerText').val('')
 	}
 })
 
 const setTimer = () => {
 	
-  timer = setInterval(() => {
-    time++
-    console.log( time + ' timer is running')
-    
+  	timer = setInterval(() => {
+
+
+	time--
+	$('#time').text('Time: ' + time)
+	console.log( time + ' timer is running');
+
+	if(time === 0){
+		clearInterval(timer)
+
+		// print message in html
+		console.log("Time's up!")
+
+		// if they got enough points, move to next round
+		// setTimer()
+	}
+
       // word++;
-    
-    if(time === 10){
-    	// word++
-    	getWord();
-    }
-    if(time === 15){
-    	clearInterval(timer)
-    }
+    // if(time === 10){
+    // 	// word++
+    // 	getWord()
+    // }
+    // if(time === 15){
+    // 	clearInterval(timer)
+    // }
     
   }, 1000);
+}
 
-};
+ 
+
 setTimer();
 
 
