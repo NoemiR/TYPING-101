@@ -1,12 +1,12 @@
 console.log('My game')
 
-let time = 10;
+let time = 60;
 let timer;
 let wordCount = 0;
 let points = 0;
 
 // this keeps track of which we are on
-let nextRound = 0;
+let nextRound = 1;
 
 // let round = 1;
 $('#name').on('click', (event) => {
@@ -16,6 +16,7 @@ $('#name').on('click', (event) => {
 	const changeName = $('input').val();
 	//$('#display').empty();
 	$('#display').text(changeName);	
+	setTimer();
 })
 const words = [
  	['yellow', 'one', 'blue', 'green', 'black', 'two', 'three', 'apple', 'the', 'array', 'house', 'pizza', 'tea',  'monkey', 'ten', 'car', 'cup', 'plate',
@@ -27,6 +28,24 @@ const words = [
 
 
 console.log(words)
+const checkWord = () => {
+
+	if(wordCount < 10){
+		wordCount++;
+		console.log(wordCount);
+	} else {
+		console.log('hitting')
+		wordCount = 0;
+		nextRound++;
+		setTimer();
+		console.log(nextRound, ' this is nextRound')
+		$('#rounds').text('Round: ' + nextRound)
+	}
+}
+
+
+
+
 // let word = roundOneWords[Math.floor(Math.random() * roundOneWords.length)];
 const getWord = () => {
 
@@ -44,21 +63,9 @@ const getWord = () => {
   	console.log(word)
 	///this will change the input value to null
 	// slice whatever word you got out of the roundOneWords
-	if(wordCount < 10){
-		wordCount++;
-		console.log(wordCount);
-	} 
-	if(points === 10){
+	
 		// tell user they won (html/jq)
-		nextRound++
-		$('#rounds').text('Round: ' + nextRound)
-		console.log(nextRound)
-	} else {
-		// start this round over
-		$('#rounds').val('')
-			// 
-			//
-	}
+
   	
 }
 
@@ -81,6 +88,7 @@ $('#answer').on('click', (event) => {//this gets the input
 		console.log(points)
 		console.log('match');//this will pop an alert if you get it right
 		getWord();	
+		checkWord();
 		// we can clear out the input
 		$('#answerText').val('')
 	} else {
@@ -90,6 +98,7 @@ $('#answer').on('click', (event) => {//this gets the input
 		console.log(points)
 		alert("keep trying")
 		getWord();
+		checkWord();
 		$('#answerText').val('')
 	}
 })
@@ -104,8 +113,24 @@ const setTimer = () => {
 	console.log( time + ' timer is running');
 
 	if(time === 0){
+		console.log('is this happening iddkkkk')
  		
 		clearInterval(timer)
+
+		// Try to create a modal 
+		// Your score was blah blah,
+		// are you ready for round two
+		// then click button yes
+
+		// when click that button this starts
+		wordCount = 0;
+		nextRound++;
+		time = 10;
+		console.log(nextRound, ' this is nextRound')
+		$('#rounds').text('Round: ' + nextRound)
+
+
+		setTimer();
 
 		// print message in html
 		console.log("Time's up!")
@@ -114,21 +139,13 @@ const setTimer = () => {
 		// setTimer()
 	}
 
-      // word++;
-    // if(time === 10){
-    // 	// word++
-    // 	getWord()
-    // }
-    // if(time === 15){
-    // 	clearInterval(timer)
-    // }
     
   }, 1000);
 }
 
  
 
-setTimer();
+// setTimer();
 
 // .effect('explode')
 	
