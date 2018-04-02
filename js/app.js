@@ -1,6 +1,6 @@
 console.log('My game')
 
-let time = 60;
+let time = 10;
 let timer;
 let wordCount = 0;
 let points = 0;
@@ -18,14 +18,15 @@ $('#name').on('click', (event) => {
 	$('#display').text(changeName);	
 })
 const words = [
- 	['yellow', 'one', 'three', 'apple', 'the', 'array', 'house', 'pizza', 'tea', 'thirteen', 'monkey', 'banana', 'awesome', 'incredible', ' strengths', 'a', 'cat', 'tiger', 'elephant', 'dinosaur', 'day', 'is', 'good', 'so', 'some', 'something', 'sound', 'still', 'such', 'take', 'tell', 'than'],
- 	['worksheet', 'printing', 'vocabulary', 'triangle', 'rhyming', 'examples', 'dictionary', 'pictures', 'poems', 'selections'],
-	['round3test1', 'round3test2', 'round3test3'],
-	['round4test1', 'round4test2', 'round4test3']
+ 	['yellow', 'one', 'blue', 'green', 'black', 'two', 'three', 'apple', 'the', 'array', 'house', 'pizza', 'tea',  'monkey', 'ten', 'car', 'cup', 'plate',
+ 	'candy', 'banana', 'awesome', 'horse', 'strengths', 'a', 'cat', 'tiger',  'day', 'is', 'good', 'so', 'some', 'sound', 'still', 'such', 'take', 'tell', 'than', 'commit', 'bird'],
+ 	['worksheet', 'dinosaur', 'printing', 'incredible', 'thirteen', 'vocabulary', 'triangle', 'rhyming', 'examples', 'dictionary',  'something', 'intend', 'practice', 'pictures', 'poems', 'selections', 'elephant', 'giraffe', 'coffee', 'address', 'evident', 'accord', 'approach', 'establish', 'straight', 'apparent', 'passage'],
+	['traintrack', 'continuing', 'outstanding', 'appointed', 'earnest', 'convention', 'territory', 'undertake', 'majority', 'attitude', 'manifest', 'resource', 'contempt', 'distinction', 'inclined', 'attribute', 'disposition', 'bestow', 'corruption', 'crerical'],
+	['ascertain', 'perpetual', 'substancial', 'elaborate', 'conspicuous', 'proceeding', 'extravagant', 'venerate', 'suffrage', 'intrigue', 'dispatch', 'railroad', 'undertaking', 'predecessor', 'delicacy']
 ] 
 
 
-
+console.log(words)
 // let word = roundOneWords[Math.floor(Math.random() * roundOneWords.length)];
 const getWord = () => {
 
@@ -103,6 +104,7 @@ const setTimer = () => {
 	console.log( time + ' timer is running');
 
 	if(time === 0){
+ 		
 		clearInterval(timer)
 
 		// print message in html
@@ -128,7 +130,7 @@ const setTimer = () => {
 
 setTimer();
 
-
+// .effect('explode')
 	
 	// $('#wordBox').empty();
 // make counter to keep track of how many words so far
