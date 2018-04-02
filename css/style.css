@@ -9,6 +9,12 @@ h1 {
 	text-align: center;
 	color: #f1f1f1;
 }
+#display {
+	color: #f1f1f1;
+	background: rgba(0, 0, 0, 0.5);
+	/*background: rgb(241, 244, 66);*/
+	
+}
 .container {
     position: relative; 
     max-width: 800px; /* Maximum width */
@@ -30,6 +36,4 @@ h1 {
 	color: #f1f1f1;
 	background: rgba(0, 0, 0, 0.5); 
 }
-.display {
-	font-color: #f1f1f1;
-}
+

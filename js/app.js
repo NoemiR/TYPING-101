@@ -2,22 +2,17 @@ console.log('My game')
 
 let time = 0;
 let timer;
+let wordCount = 0;
+let nextRound = 1;
 
 // let round = 1;
-
-
-
 $('#name').on('click', (event) => {
+	event.preventDefault();
 	console.log('Hello')
 	const changeName = $('input').val();
-	
 	//$('#display').empty();
-	$('#display').text(changeName);
-	
-	
+	$('#display').text(changeName);	
 })
-
-
 
 const arrayOfWords = ['yellow', 'one', 'three', 'apple', 'the',
  'array', 'house', 'pizza', 'tea', 'thirteen', 'monkey', 'banana', 'awesome', 'incredible', 
@@ -33,8 +28,26 @@ const getWord = () => {
 	console.log(word)
 	///this will change the input value to null
 	// slice whatever word you got out of the arrayOfWords
-	const wordCount = $('#wordBox').val().length;
-	console.log(wordCount);
+		
+
+	if(wordCount < 10){
+		wordCount++;
+		console.log(wordCount);
+	} else {
+		nextRound++;
+		wordCount = 0;
+	}
+
+
+
+
+
+
+
+
+
+
+
 };
 
 getWord();
@@ -43,12 +56,16 @@ $('#answer').on('click', (event) => {//this gets the input
 	event.preventDefault();//this prevents it 
 	console.log('response')
 	const wordAnswer = $('#answerText').val();
+
 	console.log(wordAnswer);
-	$('.respuesta').text(wordAnswer);
+	$('#answerText').text(wordAnswer);
 	console.log(wordAnswer);
+
 	if($('#wordBox').text() === wordAnswer) {//if the word given is the same
-	alert('match');//this will pop an alert if you get it right
+		alert('match');//this will pop an alert if you get it right
 		getWord();	
+		// we can clear out the input
+		$('#answerText').val('')
 	}else {
 		alert("you got it wrong")
 		getWord();
