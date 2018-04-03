@@ -6,7 +6,7 @@ let wordCount = 0;
 let points = 0;
 
 // this keeps track of which we are on
-let nextRound = 1;
+let nextRound = 0;
 
 // let round = 1;
 $('#name').on('click', (event) => {
@@ -19,8 +19,10 @@ $('#name').on('click', (event) => {
 	setTimer();
 })
 const words = [
+	['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'],
  	['yellow', 'one', 'blue', 'green', 'black', 'two', 'three', 'apple', 'the', 'array', 'house', 'pizza', 'tea',  'monkey', 'ten', 'car', 'cup', 'plate',
  	'candy', 'banana', 'awesome', 'horse', 'strengths', 'a', 'cat', 'tiger',  'day', 'is', 'good', 'so', 'some', 'sound', 'still', 'such', 'take', 'tell', 'than', 'commit', 'bird'],
+ 	['Alfa', 'Bravo', 'Charlie', 'Delta', 'Echo', 'Foxtrot', 'Golf', 'Hotel', 'India', 'Juliett', 'Kilo', 'Lima', 'Mike', 'November', 'Oscar', 'Papa', 'Quebec', 'Romeo', 'Sierra', 'Tango', 'Uniform', 'Victor', 'Whiskey', 'X-ray', 'Yankee', 'Zulu'],
  	['worksheet', 'dinosaur', 'printing', 'incredible', 'thirteen', 'vocabulary', 'triangle', 'rhyming', 'examples', 'dictionary',  'something', 'intend', 'practice', 'pictures', 'poems', 'selections', 'elephant', 'giraffe', 'coffee', 'address', 'evident', 'accord', 'approach', 'establish', 'straight', 'apparent', 'passage'],
 	['traintrack', 'continuing', 'outstanding', 'appointed', 'earnest', 'convention', 'territory', 'undertake', 'majority', 'attitude', 'manifest', 'resource', 'contempt', 'distinction', 'inclined', 'attribute', 'disposition', 'bestow', 'corruption', 'crerical'],
 	['ascertain', 'perpetual', 'substancial', 'elaborate', 'conspicuous', 'proceeding', 'extravagant', 'venerate', 'suffrage', 'intrigue', 'dispatch', 'railroad', 'undertaking', 'predecessor', 'delicacy']
@@ -115,7 +117,7 @@ const setTimer = () => {
 	if(time === 0){
 		console.log('is this happening iddkkkk')
  		
-		clearInterval(timer)
+		clearInterval(timer);
 
 		// Try to create a modal 
 		// Your score was blah blah,
@@ -123,11 +125,11 @@ const setTimer = () => {
 		// then click button yes
 
 		// when click that button this starts
-		wordCount = 0;
-		nextRound++;
-		time = 10;
-		console.log(nextRound, ' this is nextRound')
-		$('#rounds').text('Round: ' + nextRound)
+		// wordCount = 0;
+		// nextRound++;
+		// time = 10;
+		// console.log(nextRound, ' this is nextRound')
+		// $('#rounds').text('Round: ' + nextRound)
 
 
 		setTimer();
@@ -142,8 +144,43 @@ const setTimer = () => {
     
   }, 1000);
 }
+	
 
- 
+	// rewrite this code in jquery
+ 	// const modal = document.querySelector(".modal");
+ 	const modal = $(".modal");
+
+    // const trigger = document.querySelector(".trigger");
+    const trigger = $(".trigger");
+
+    // const closeButton = document.querySelector(".close-button");
+    const closeButton = $(".close-button");
+
+    function toggleModal() {
+    	// how do I toggle a class in jquery
+        $(".modal").toggleClass("show-modal");
+    }
+
+    // function windowOnClick(event) {
+    	$(window).click(function(e){
+    		if (e.target === modal){
+    			toggleModal();
+    		}
+    	})
+    	
+   
+        // if (event.target === modal) {
+        //     toggleModal();
+        // }
+    // }
+    //click functions in jquery
+    // trigger.addEventListener("click", toggleModal);
+    $(".trigger").on("click", toggleModal);
+
+    // closeButton.addEventListener("click", toggleModal);
+    $(".close-button").on("click", toggleModal);
+    // window.addEventListener("click", windowOnClick);
+	
 
 // setTimer();
 
