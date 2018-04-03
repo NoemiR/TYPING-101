@@ -25,46 +25,26 @@ const checkWord = () => {
 		console.log(wordCount);
 
 	} else { // we've done 10 words -- reset wordCount to 0 and go to next round
-
-		// console.log('hitting')
+		console.log("resetting word count")
 		wordCount = 0;
-		startRound();
-		// nextRound++;
-		// setTimer();
-		// console.log(nextRound, ' this is nextRound')
-		
+		clearInterval(timer);
+		toggleModal();		
 	}
 }
 
-
-
-// let word = roundOneWords[Math.floor(Math.random() * roundOneWords.length)];
 const getWord = () => {
 
 	// get the correct array for this round
 	const roundArray = words[nextRound-1];
-	// console.log(roundArray)
 
 	// get random word from that array
- 	const word = roundArray[Math.floor(Math.random() * roundArray.length)] 	
- 	// console.log(word)
-
+ 	const word = roundArray[Math.floor(Math.random() * roundArray.length)];
 
   	let box = $('#wordBox')
   	box.text(word);
-  	// console.log(word)
-
-	///this will change the input value to null
-	// slice whatever word you got out of the roundOneWords
 	
-		// tell user they won (html/jq)
-
-  	
+	// tell user they won (html/jq)  	
 }
-// console.log(getWord);
-// getWord();
-
-
 
 const setTimer = () => {
 	
@@ -82,46 +62,21 @@ const setTimer = () => {
 			clearInterval(timer);
 			
 			toggleModal();
-			// startRound();
 		
 			// Try to create a modal 
 			// Your score was blah blah,
 			// are you ready for round two
 			// then click button yes
-
 			// when click that button this starts
-			
-			// time = 10;
-			// console.log(nextRound, ' this is nextRound')
-			// $('#rounds').text('Round: ' + nextRound)
 
-			// toggleModal();
-			// clearInterval(timer);
-			// // wordCount = 0;
-			// // nextRound++;
-			// setTimer();
-			// getWord();
 			// print message in html
 			console.log("Time's up!")
 
 			// if they got enough points, move to next round
-			// setTimer()
 		}
 
-	    
 	}, 1000);
 }
-	
-
-// // rewrite this code in jquery
-// // const modal = document.querySelector(".modal");
-// const modal = $(".modal");
-
-// // const trigger = document.querySelector(".trigger");
-// const trigger = $(".trigger");
-
-// // const closeButton = document.querySelector(".close-button");
-// const closeButton = $(".close-button");
 
 function toggleModal() {
 	// how do I toggle a class in jquery
@@ -139,7 +94,7 @@ function startRound() {
 	time = 60;
 
 }
-// const 
+
 
 //click functions in jquery
 // trigger.addEventListener("click", toggleModal);
@@ -164,11 +119,9 @@ $('#answer').on('click', (event) => {//this gets the input
 		points++;
 		// print points in html
 		$('#score').text("Points: " + points)
-		// console.log(points)
-		// console.log('match');//this will pop an alert if you get it right
 		getWord();	
 		checkWord();
-		// we can clear out the input
+		// clear out the input
 		$('#answerText').val('')
 
 	} else { // user typed word incorrectly
@@ -186,16 +139,11 @@ $('#answer').on('click', (event) => {//this gets the input
 $('#name').on('click', (event) => {
 	event.preventDefault();
 	// $('#name').effect('explode');
-	console.log('Hello')
 	const changeName = $('input').val();
-	//$('#display').empty();
 	$('#display').text(changeName);	
-
-	// setTimer();
 	startRound();
 })
 
-// setTimer();
 
 
 
