@@ -1,14 +1,12 @@
 console.log('My game')
 
-let time = 60;
+let time = 20;
 let timer;
 let wordCount = 0;
 let points = 0;
-
 // this keeps track of which we are on
 let nextRound = 0;
 
-// let round = 1;
 $('#name').on('click', (event) => {
 	event.preventDefault();
 	// $('#name').effect('explode');
@@ -19,7 +17,7 @@ $('#name').on('click', (event) => {
 	setTimer();
 })
 const words = [
-	['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'],
+	// ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'],
  	['yellow', 'one', 'blue', 'green', 'black', 'two', 'three', 'apple', 'the', 'array', 'house', 'pizza', 'tea',  'monkey', 'ten', 'car', 'cup', 'plate',
  	'candy', 'banana', 'awesome', 'horse', 'strengths', 'a', 'cat', 'tiger',  'day', 'is', 'good', 'so', 'some', 'sound', 'still', 'such', 'take', 'tell', 'than', 'commit', 'bird'],
  	['Alfa', 'Bravo', 'Charlie', 'Delta', 'Echo', 'Foxtrot', 'Golf', 'Hotel', 'India', 'Juliett', 'Kilo', 'Lima', 'Mike', 'November', 'Oscar', 'Papa', 'Quebec', 'Romeo', 'Sierra', 'Tango', 'Uniform', 'Victor', 'Whiskey', 'X-ray', 'Yankee', 'Zulu'],
@@ -108,32 +106,37 @@ $('#answer').on('click', (event) => {//this gets the input
 const setTimer = () => {
 	
   	timer = setInterval(() => {
-
+  		console.log(timer+" is this");
 
 	time--
 	$('#time').text('Time: ' + time)
 	console.log( time + ' timer is running');
 
 	if(time === 0){
+
 		console.log('is this happening iddkkkk')
  		
 		clearInterval(timer);
-
+		
+		toggleModal();
+		startRound();
 		// Try to create a modal 
 		// Your score was blah blah,
 		// are you ready for round two
 		// then click button yes
 
 		// when click that button this starts
-		// wordCount = 0;
-		// nextRound++;
+		
 		// time = 10;
 		// console.log(nextRound, ' this is nextRound')
 		// $('#rounds').text('Round: ' + nextRound)
 
-
-		setTimer();
-
+		// toggleModal();
+		// clearInterval(timer);
+		// // wordCount = 0;
+		// // nextRound++;
+		// setTimer();
+		// getWord();
 		// print message in html
 		console.log("Time's up!")
 
@@ -161,21 +164,10 @@ const setTimer = () => {
         $(".modal").toggleClass("show-modal");
     }
 
-    // function windowOnClick(event) {
-    	$(window).click(function(e){
-    		if (e.target === modal){
-    			toggleModal();
-    		}
-    	})
-    	
-   
-        // if (event.target === modal) {
-        //     toggleModal();
-        // }
-    // }
+ 
     //click functions in jquery
     // trigger.addEventListener("click", toggleModal);
-    $(".trigger").on("click", toggleModal);
+    $("#modal-button").on("click", toggleModal);
 
     // closeButton.addEventListener("click", toggleModal);
     $(".close-button").on("click", toggleModal);
@@ -183,6 +175,21 @@ const setTimer = () => {
 	
 
 // setTimer();
+const startRound = () => {
+	setTimer();
+	getWord();
+	time = 20;
+
+}
+
+
+
+
+
+
+
+
+
 
 // .effect('explode')
 	
