@@ -9,11 +9,12 @@
 <body>
 	<div id="display">
 		<form>
-	  		<input type="text" name="player">
+	  		<input id="playername" type="text" name="player" autocomplete="off">
 			<button id="name">Your Name</button>
 		</form>
 	</div>
 	<h1>TYPING 101</h1>
+	<div id="strike">X</div>
 	<div id="container">
 	<h2 id="score">Points: 0</h2>
 	<h2 id="rounds">Round: 1</h2>
@@ -23,7 +24,7 @@
 
 	
 	<div class="content">
-		<div class="respuesta">	
+		<!-- <div class="respuesta">	 -->
 			<form>
 				<input type="text" id='answerText' name="answer" autocomplete="off">
 				<button id="answer">Answer</button>
@@ -36,7 +37,7 @@
     <div class="modal">
         <div class="modal-content">
             <span class="close-button">&times;</span>
-            <h1>Hello, Are you ready to play?</h1>
+            <h1>Are you ready to for next round?</h1>
             <button id="modal-button">Yes</button>
         </div>
     </div>
