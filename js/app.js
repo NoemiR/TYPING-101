@@ -8,6 +8,13 @@ let points = 0;
 let nextRound = 0;
 let correctWord = 0;
 let wrongAnswer = 0;
+let text = $("#strike")
+text.css("color: red", "font-size: 45px");
+// console.log()
+	// text = 0;
+// let	textt = (text + "x");
+// let struck = $("#strike").text(textt);
+console.log(text)
 
 const words = [
 	// ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'],
@@ -48,23 +55,45 @@ const getWord = () => {
 	
 	// tell user they won (html/jq)  	
 }
-const correctGuess = () => {
-	if(correctWord === 10){
-		startRound();
-	}
-	else if(correctWord === 7){
-		gameOver();
-	} else {
-		console.log(correctWord);
-	}
+// const correctGuess = () => {
+
+// 	if(correctWord === 10){
+// 		startRound();
+// 	}
+// 	else if(correctWord === 7){
+// 		gameOver();
+// 	} else {
+// 		console.log(correctWord);
+// }
+
+// }
+// const incorrectGuess = () => {
+// 	let x = $('#strike')
+
+// }
+
+	
+// console.log(wrongAnswer);
+
+
+function startRound() {
+	if(nextRound !== 0) {
+		toggleModal();
+	}	
+	setTimer();
+	nextRound++;
+	$('#rounds').text('Round: ' + nextRound)
+	getWord();
+	time = 60;
+	correctWord = 0;
 
 }
-const incorrectGuess = () => {
-	let x = $('#strike')
-	x.text(wrongAnswer);
+function gameOver() {
+	if(wrongAnswer === 3){
+	clearInterval(timer);
+	alert('GAME OVER')
+	}
 }
-
-console.log(wrongAnswer);
 
 const setTimer = () => {
 	
@@ -92,37 +121,16 @@ const setTimer = () => {
 
 	}, 1000);
 }
- 			// Try to create a modal 
-			// Your score was blah blah,
-			// are you ready for round two
-			// then click button yes
-			// when click that button this starts
 
 function toggleModal() {
 	// how do I toggle a class in jquery
     $(".modal").toggleClass("show-modal");
 }
-
-function startRound() {
-	if(nextRound !== 0) {
-		toggleModal();
-	}	
-	setTimer();
-	nextRound++;
-	$('#rounds').text('Round: ' + nextRound)
-	getWord();
-	time = 60;
-	correctWord = 0;
-
-}
-function gameOver() {
-	if(wrongAnswer === 3){
-	clearInterval(timer);
-	alert('GAME OVER')
-	}
-}
-
-
+			// Try to create a modal 
+			// Your score was blah blah,
+			// are you ready for round two
+			// then click button yes
+			// when click that button this starts
 //click functions in jquery
 // trigger.addEventListener("click", toggleModal);
 $("#modal-button").on("click", startRound);
@@ -136,8 +144,8 @@ $('#answer').on('click', (event) => {//this gets the input
 	event.preventDefault();//this prevents it 
 	// console.log('response');
 
-	const wordAnswer = $('#answerText').val();
-	console.log(wordAnswer);
+const wordAnswer = $('#answerText').val();
+console.log(wordAnswer);
 	$('#answerText').text(wordAnswer);
 	// console.log(wordAnswer);
 
@@ -156,6 +164,10 @@ $('#answer').on('click', (event) => {//this gets the input
 	} else { // user typed word incorrectly
 		points--;
 		wrongAnswer++;
+		// text.text("x")
+		text.append("x")
+		// $("#strike").text(textt);
+		
 		// x.text(wrongAnswer)
 		alert(wrongAnswer + ' oh man');
 		gameOver();

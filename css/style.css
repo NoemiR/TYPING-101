@@ -13,8 +13,10 @@ h1 {
 
 }
 #strike {
-	font-size: 75px;
-	color: rgb(142, 2, 14);
+	/*background-color: rgb(89, 87, 87); */
+	font-size: 115px;
+	color: rgb(239, 21, 21);
+	text-align: left;
 }
 #display {
 	text-align: right;
