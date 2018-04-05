@@ -10,6 +10,7 @@ h1 {
 	font-size: 75px;
 	text-align: center;
 	color: #f1f1f1;
+	background: rgba(0, 0, 0, 0.5);
 
 }
 #strike {
@@ -23,6 +24,8 @@ h1 {
 	color: #f1f1f1;
 	background: rgba(0, 0, 0, 0.5);
 	font-size: 45px;
+
+
 	/*background: rgb(241, 244, 66);*/
 	/*position: absolute;*/
 	
@@ -31,11 +34,12 @@ h1 {
 
   /*  position: relative;*/ 
     max-width: 800px; /* Maximum width */
-    height: 320px;
+    height: 190px;
     font-size: 25px;
     display: flex;
     justify-content: space-between;
     margin: 0 auto;
+    
 
 
 }
@@ -53,9 +57,21 @@ h1 {
 	font-size: 45px;
 	color: #f1f1f1;
 	background: rgba(0, 0, 0, 0.5); 
+	text-align: center;
 }
+#answerText {
+	padding:5px; 
+    border:2px solid #ccc; 
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
 
-
+}
+#playername {
+	padding:5px; 
+    border:2px solid #ccc; 
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+}
 
 
 .modal {
@@ -75,10 +91,11 @@ h1 {
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        background-color: rgba(0, 0, 0, 0.5);
+        background-color: rgba(0, 0, 0, 0.9);
         padding: 1rem 1.5rem;
         width: 24rem;
         border-radius: 0.5rem;
+        
     }
     .close-button {
         float: right;
@@ -91,6 +108,13 @@ h1 {
     }
     .close-button:hover {
         background-color: darkgray;
+    }
+    .modal-button{
+    	width: 75px;
+
+    }
+    #message {
+    	color: rgb(66, 244, 223);
     }
     .show-modal {
         opacity: 1;

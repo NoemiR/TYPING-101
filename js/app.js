@@ -18,12 +18,14 @@ console.log(text)
 
 const words = [
 	// ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'],
- 	['red', 'blue', 'green', 'black', 'purple', 'pink', 'orange', 'gray', 'white', 'brown'],
- 	['yellow', 'one', 'blue', 'green', 'black', 'two', 'three', 'apple', 'the', 'array', 'house', 'pizza', 'tea',  'monkey', 'ten', 'car', 'cup', 'plate', 'candy', 'banana', 'awesome', 'horse', 'strengths', 'a', 'cat', 'tiger',  'day', 'is', 'good', 'so', 'some', 'sound', 'still', 'such', 'take', 'tell', 'than', 'commit', 'bird'],
- 	['Alfa', 'Bravo', 'Charlie', 'Delta', 'Echo', 'Foxtrot', 'Golf', 'Hotel', 'India', 'Juliett', 'Kilo', 'Lima', 'Mike', 'November', 'Oscar', 'Papa', 'Quebec', 'Romeo', 'Sierra', 'Tango', 'Uniform', 'Victor', 'Whiskey', 'X-ray', 'Yankee', 'Zulu'],
+ 	['red', 'is', 'blue', 'so', 'green', 'car', 'black', 'purple', 'pink', 'orange', 'gray', 'white', 'brown', 'aqua', 'pig', 'tea', 'bed', 'giant', 'small'],
+ 	['yellow', 'one', 'blue', 'green', 'black', 'two', 'three', 'apple', 'the', 'array', 'house', 'pizza', 'tea',  'monkey', 'ten', 'car', 'cup', 'plate', 'candy', 'banana', 'awesome', 'horse', 'strengths', 'carrot', 'cat', 'tiger',  'day', 'string', 'good', 'soap', 'some', 'sound', 'still', 'such', 'take', 'tell', 'than', 'commit', 'bird'],
+ 	['rainbow', 'raining', 'thunder', 'equal', 'telephone', 'resume', 'computer', 'option', 'price', 'premium']
+ 	
  	['worksheet', 'dinosaur', 'printing', 'incredible', 'thirteen', 'vocabulary', 'triangle', 'rhyming', 'examples', 'dictionary',  'something', 'intend', 'practice', 'pictures', 'poems', 'selections', 'elephant', 'giraffe', 'coffee', 'address', 'evident', 'accord', 'approach', 'establish', 'straight', 'apparent', 'passage'],
 	['traintrack', 'continuing', 'outstanding', 'appointed', 'earnest', 'convention', 'territory', 'undertake', 'majority', 'attitude', 'manifest', 'resource', 'contempt', 'distinction', 'inclined', 'attribute', 'disposition', 'bestow', 'corruption', 'crerical'],
-	['ascertain', 'perpetual', 'substancial', 'elaborate', 'conspicuous', 'proceeding', 'extravagant', 'venerate', 'suffrage', 'intrigue', 'dispatch', 'railroad', 'undertaking', 'predecessor', 'delicacy']
+	['ascertain', 'perpetual', 'substancial', 'elaborate', 'conspicuous', 'proceeding', 'extravagant', 'venerate', 'suffrage', 'intrigue', 'dispatch', 'railroad', 'undertaking', 'predecessor', 'delicacy'],
+	['Alfa', 'Bravo', 'Charlie', 'Delta', 'Echo', 'Foxtrot', 'Golf', 'Hotel', 'India', 'Juliett', 'Kilo', 'Lima', 'Mike', 'November', 'Oscar', 'Papa', 'Quebec', 'Romeo', 'Sierra', 'Tango', 'Uniform', 'Victor', 'Whiskey', 'X-ray', 'Yankee', 'Zulu'],
 ] 
 
 
@@ -55,18 +57,19 @@ const getWord = () => {
 	
 	// tell user they won (html/jq)  	
 }
-// const correctGuess = () => {
+const correctGuess = () => {
 
-// 	if(correctWord === 10){
-// 		startRound();
-// 	}
-// 	else if(correctWord === 7){
-// 		gameOver();
-// 	} else {
-// 		console.log(correctWord);
-// }
+	if(correctWord === 10){
+		clearInterval(timer);
+		toggleModal();
+	}
+	else if(correctWord === 7){
+		gameOver();
+	} else {
+		console.log(correctWord);
+	}
 
-// }
+}
 // const incorrectGuess = () => {
 // 	let x = $('#strike')
 
@@ -78,6 +81,7 @@ const getWord = () => {
 
 function startRound() {
 	if(nextRound !== 0) {
+		
 		toggleModal();
 	}	
 	setTimer();
@@ -92,7 +96,12 @@ function gameOver() {
 	if(wrongAnswer === 3){
 	clearInterval(timer);
 	alert('GAME OVER')
+	$('#wordBox').text("")
+	$('#answerText').hide()
+	$('#answer').hide()
+	$('#container').text('Game Over!').css('font-size', '70px');
 	}
+
 }
 
 const setTimer = () => {
@@ -156,7 +165,8 @@ console.log(wordAnswer);
 		console.log(correctWord);
 		// print points in html
 		$('#score').text("Points: " + points)
-		getWord();	
+		getWord();
+		correctGuess();	
 		// countingWords();
 		// clear out the input
 		$('#answerText').val('')
