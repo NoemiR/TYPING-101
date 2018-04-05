@@ -50,7 +50,7 @@ const countingWords = () => {
 		
 
 	} else { // we've done 10 words -- reset wordCount to 0 and go to next round
-		console.log("resetting word count")
+		// console.log("resetting word count")
 		wordCount = 0;
 		clearInterval(timer);
 		toggleModal();		
@@ -60,7 +60,7 @@ const countingWords = () => {
 const getWord = () => {
 
 	// get the correct array for this round
-	const roundArray = words[nextRound-1];
+	const roundArray = words[nextRound];
 
 	// get random word from that array
  	const word = roundArray[Math.floor(Math.random() * roundArray.length)];
@@ -92,8 +92,9 @@ function startRound() {
 		toggleModal();
 	}	
 	// $('audio#pop2')[0].play()
-	nextRound++;console.log("nextRound is now "+ nextRound)
+	nextRound++;
 	setTimer();
+	console.log('nextround', nextRound, )
 	$('#rounds').text('Round: ' + nextRound)
 	getWord();
 	time = 60;
@@ -103,23 +104,34 @@ function startRound() {
 function gameOver() {
 	if(wrongAnswer === 3){
 		clearInterval(timer);
-		$('#wordBox').text("")
-		$('#answerText').hide()
-		$('#answer').hide()
-		$('#title').hide()
-
-		$('#container').text('Game Over!').css({
-			"height": "600px",
-			"font-size": "200px",
-			"text-align": "center",
-			"background-color": "rgba(0, 0, 0, 0.9)"
-		});
+		 $('#wordBox').hide()
+		$('#container').hide()
+	
+	
 		$('audio#pop2')[0].pause()
 		$('audio#pop')[0].play()
+		toggleModal("Game Over", "Restart");
+
+		//add a click listener for the restart button
+		// $("#modal-button").on('click', restartGame)
 	}
 
 }
+// function restartGame() {
+// 			// toggleModal2();
+// 			$('#wordBox').show()
+// 			// setTimer();
+// 			// getWord();
+// 			time = 60;
+// 			wordCount = 0;
+// 			points = 0;
+// 			nextRound = 0;
+// 			correctWord = 0;
+// 			startRound();
+// 			// box.text(word)
+			
 
+// }
 const setTimer = () => {
 	
   	timer = setInterval(() => {
@@ -139,11 +151,39 @@ const setTimer = () => {
 
 	}, 1000);
 }
+// function toggleModal2() {
+// 	// how do I toggle a class in jquery
+//     $(".modal2").toggleClass("show-modal");
+// }
 
-function toggleModal() {
+
+// $("#modal-button2").on("click", (event) => {
+// 	event.preventDefault()
+// 	$('audio#pop2')[0].play()
+// 	restartGame();
+// })
+
+
+
+
+// $(".close-button2").on("click", toggleModal2);
+
+function toggleModal(str, txt) {
+
+
+	if(txt === 'Restart'){
+		//points, score, whatever
+		// reset your variables 
+	}
+	//change message
+	$('#message').text(str)
+	//change button text
+	$("#modal-button").text(txt);
 	// how do I toggle a class in jquery
     $(".modal").toggleClass("show-modal");
 }
+
+
 $("#modal-button").on("click", (event) => {
 	event.preventDefault()
 	startRound();
@@ -197,6 +237,35 @@ $('#name').on('click', (event) => {
 	$('audio#pop2')[0].play()
 	startRound();
 })
+	
+		// let end = $("<div>Game Over</div>").attr("id", "ending")
+		// end.css({
+		// 	"height": "900px",
+		// 	"font-size": "200px",
+		// 	"text-align": "center",
+		// 	"background-color": "rgba(0, 0, 0, 0.9)"
+		// });
+		// let restart = $('<button>Restart</button>').on('click', (event) => {
+		// 	// reset all your variables
+		// 	event.preventDefault();
+		// 	$('#container').show()
+		// 	$('#ending').remove()
+		// 	text.remove()
+			
+			
+		// 	restartGame();
+			
+		// })
+		// restart.css({
+		// 	"height": "45px",
+		// 	"width": "65px",
+		// 	"padding": "5px", 
+  //   		"border": "2px solid #ccc", 
+  //   		"-webkit-border-radius": "5px",
+  //   		"border-radius": "5px"
+		// })
+		// end.append(restart);
+		// $('body').append(end);
 
 
 			
