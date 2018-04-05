@@ -6,10 +6,12 @@ body {
 
 
 }
-h1 {
+#title {
+	height: 0px;
+	width: 1000px;
 	font-size: 75px;
 	text-align: center;
-	color: #f1f1f1;
+	/*color: #f1f1f1;*/
 	background: rgba(0, 0, 0, 0.5);
 
 }
@@ -20,14 +22,13 @@ h1 {
 	text-align: left;
 }
 #display {
+	height: 0px;
 	text-align: right;
-	color: #f1f1f1;
+	/*color: #f1f1f1;*/
 	background: rgba(0, 0, 0, 0.5);
-	font-size: 45px;
+	font-size: 40px;
 
 
-	/*background: rgb(241, 244, 66);*/
-	/*position: absolute;*/
 	
 }
 #container {
@@ -46,17 +47,17 @@ h1 {
 .content {
     /*position: absolute;  Position the background text 
     bottom: 0; /* At the bottom. Use top:0 to append it to the top */
-    background: rgba(0, 0, 0, 0.5); /* Black background with 0.5 opacity */
-    color: #f1f1f1; /* Grey text */
+    /*background: rgba(0, 0, 0, 0.5);*/ /* Black background with 0.5 opacity */
+   /* color: #f1f1f1; *//* Grey text */
     width: 100%; /* Full width */
     padding: 20px; /* Some padding */
    /* display: inline-block;*/
- text-align: center;
+ 	text-align: center;
 }
 #wordBox {
 	font-size: 45px;
-	color: #f1f1f1;
-	background: rgba(0, 0, 0, 0.5); 
+	/*color: #f1f1f1;*/
+	/*background: rgba(0, 0, 0, 0.5); */
 	text-align: center;
 }
 #answerText {
@@ -114,6 +115,7 @@ h1 {
 
     }
     #message {
+    	font-size: 65px;
     	color: rgb(66, 244, 223);
     }
     .show-modal {

@@ -17,8 +17,8 @@ text.css("color: red", "font-size: 45px");
 console.log(text)
 
 const words = [
-	// ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'],
- 	['red', 'is', 'blue', 'so', 'green', 'car', 'black', 'purple', 'pink', 'orange', 'gray', 'white', 'brown', 'aqua', 'pig', 'tea', 'bed', 'giant', 'small'],
+	['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'],
+ 	['red', 'is', 'this', 'and', 'cold', 'total', 'food', 'blue', 'so', 'green', 'car', 'black', 'purple', 'pink', 'orange', 'gray', 'white', 'brown', 'aqua', 'pig', 'tea', 'bed', 'giant', 'small'],
  	['yellow', 'one', 'blue', 'green', 'black', 'two', 'three', 'apple', 'the', 'array', 'house', 'pizza', 'tea',  'monkey', 'ten', 'car', 'cup', 'plate', 'candy', 'banana', 'awesome', 'horse', 'strengths', 'carrot', 'cat', 'tiger',  'day', 'string', 'good', 'soap', 'some', 'sound', 'still', 'such', 'take', 'tell', 'than', 'commit', 'bird'],
  	['rainbow', 'raining', 'thunder', 'equal', 'telephone', 'resume', 'computer', 'option', 'price', 'premium']
  	
@@ -26,7 +26,7 @@ const words = [
 	['traintrack', 'continuing', 'outstanding', 'appointed', 'earnest', 'convention', 'territory', 'undertake', 'majority', 'attitude', 'manifest', 'resource', 'contempt', 'distinction', 'inclined', 'attribute', 'disposition', 'bestow', 'corruption', 'crerical'],
 	['ascertain', 'perpetual', 'substancial', 'elaborate', 'conspicuous', 'proceeding', 'extravagant', 'venerate', 'suffrage', 'intrigue', 'dispatch', 'railroad', 'undertaking', 'predecessor', 'delicacy'],
 	['Alfa', 'Bravo', 'Charlie', 'Delta', 'Echo', 'Foxtrot', 'Golf', 'Hotel', 'India', 'Juliett', 'Kilo', 'Lima', 'Mike', 'November', 'Oscar', 'Papa', 'Quebec', 'Romeo', 'Sierra', 'Tango', 'Uniform', 'Victor', 'Whiskey', 'X-ray', 'Yankee', 'Zulu'],
-] 
+]; 
 
 
 
@@ -62,6 +62,7 @@ const correctGuess = () => {
 	if(correctWord === 10){
 		clearInterval(timer);
 		toggleModal();
+		
 	}
 	else if(correctWord === 7){
 		gameOver();
@@ -80,12 +81,13 @@ const correctGuess = () => {
 
 
 function startRound() {
+	// on round 1 there is no modal to close
 	if(nextRound !== 0) {
-		
 		toggleModal();
 	}	
+
+	nextRound++;console.log("nextRound is now "+ nextRound)
 	setTimer();
-	nextRound++;
 	$('#rounds').text('Round: ' + nextRound)
 	getWord();
 	time = 60;
@@ -94,12 +96,16 @@ function startRound() {
 }
 function gameOver() {
 	if(wrongAnswer === 3){
-	clearInterval(timer);
-	alert('GAME OVER')
-	$('#wordBox').text("")
-	$('#answerText').hide()
-	$('#answer').hide()
-	$('#container').text('Game Over!').css('font-size', '70px');
+		clearInterval(timer);
+		// alert('GAME OVER')
+		$('#wordBox').text("")
+		$('#answerText').hide()
+		$('#answer').hide()
+		$('#container').text('Game Over!').css({
+			"font-size": "100px",
+			"text-align": "center",
+			"background-color": "rgba(0, 0, 0, 0.9)"
+		});
 	}
 
 }
@@ -142,7 +148,12 @@ function toggleModal() {
 			// when click that button this starts
 //click functions in jquery
 // trigger.addEventListener("click", toggleModal);
-$("#modal-button").on("click", startRound);
+$("#modal-button").on("click", (event) => {
+	event.preventDefault()
+	startRound();
+})
+
+
 
 // closeButton.addEventListener("click", toggleModal);
 $(".close-button").on("click", toggleModal);
@@ -153,8 +164,9 @@ $('#answer').on('click', (event) => {//this gets the input
 	event.preventDefault();//this prevents it 
 	// console.log('response');
 
-const wordAnswer = $('#answerText').val();
-console.log(wordAnswer);
+	const wordAnswer = $('#answerText').val();
+	console.log(wordAnswer);
+	
 	$('#answerText').text(wordAnswer);
 	// console.log(wordAnswer);
 
@@ -179,7 +191,7 @@ console.log(wordAnswer);
 		// $("#strike").text(textt);
 		
 		// x.text(wrongAnswer)
-		alert(wrongAnswer + ' oh man');
+		// alert(wrongAnswer + ' oh man');
 		gameOver();
 		
 		
