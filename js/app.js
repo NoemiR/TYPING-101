@@ -91,7 +91,7 @@ function startRound() {
 	if(nextRound !== 0) {
 		toggleModal();
 	}	
-
+	// $('audio#pop2')[0].play()
 	nextRound++;console.log("nextRound is now "+ nextRound)
 	setTimer();
 	$('#rounds').text('Round: ' + nextRound)
@@ -106,11 +106,16 @@ function gameOver() {
 		$('#wordBox').text("")
 		$('#answerText').hide()
 		$('#answer').hide()
+		$('#title').hide()
+
 		$('#container').text('Game Over!').css({
-			"font-size": "100px",
+			"height": "600px",
+			"font-size": "200px",
 			"text-align": "center",
 			"background-color": "rgba(0, 0, 0, 0.9)"
 		});
+		$('audio#pop2')[0].pause()
+		$('audio#pop')[0].play()
 	}
 
 }
@@ -189,6 +194,7 @@ $('#name').on('click', (event) => {
 	const changeName = $('input').val();
 	$('#display').text(changeName);	
 	$('#playername').val('')
+	$('audio#pop2')[0].play()
 	startRound();
 })
 
