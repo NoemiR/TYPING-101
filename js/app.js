@@ -89,6 +89,7 @@ const correctGuess = () => {
 
 
 function startRound() {
+	console.log(nextRound);
 	// on round 1 there is no modal to close
 	if(nextRound !== 0) {
 		toggleModal();
@@ -149,7 +150,7 @@ function toggleModal(str, txt) {
 		nextRound = 0;
 		time = 60;
 		correctWord = 0;
-		getWord();
+		// getWord();
 		//points, score, whatever
 		// reset your variables 
 	}
@@ -164,6 +165,7 @@ function toggleModal(str, txt) {
 
 $("#modal-button").on("click", (event) => {
 	event.preventDefault()
+	toggleModal();
 	startRound();
 })
 
