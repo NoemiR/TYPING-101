@@ -12,36 +12,38 @@ text.css("color: red", "font-size: 45px");
 
 
 
-const words = [    
+const words = [ 
+
 //  ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k',
 // 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'],
-['red', 'is', 'this', 'and', 'cold', 'total', 'food', 'blue', 'so', 'green',
-'car', 'black', 'purple', 'pink', 'orange', 'gray', 'white', 'brown', 'aqua',
+
+['red', 'bank', 'dessert', 'rug', 'is', 'this', 'and', 'cold', 'total', 'food', 'blue', 'so', 'green',
+'car', 'black', 'purple', 'pink', 'street', 'public', 'pressure', 'orange', 'gray', 'white', 'brown', 'aqua',
 'pig', 'tea', 'bed', 'giant', 'small'],     
-['yellow', 'one', 'blue', 'green',
+['lake', 'yellow', 'one', 'blue', 'green',
 'black', 'two', 'three', 'apple', 'the', 'array', 'house', 'pizza', 'tea',
 'monkey', 'ten', 'car', 'cup', 'plate', 'candy', 'banana', 'awesome', 'horse',
 'strengths', 'carrot', 'cat', 'tiger',  'day', 'string', 'good', 'soap',
 'some', 'sound', 'still', 'such', 'take', 'tell', 'than', 'commit', 'bird'],
-['rainbow', 'raining', 'thunder', 'equal', 'telephone', 'resume', 'computer',
-'option', 'price', 'premium'],	
-['worksheet', 'dinosaur', 'printing', 'incredible', 'thirteen',
+['rainbow', 'security', 'pancake', 'raining', 'thunder', 'equal', 'telephone', 'resume', 'computer',
+'option', 'banquet', 'price', 'premium', 'lovely', 'stove', 'pretty', 'telescope', 'gasoline', 'salad', 'library', 'star', 'sushi', 'ocean'],	
+['worksheet', 'dinosaur', 'printing', 'incredible', 'thirteen', 'conclusion', 'laptop',
 'vocabulary', 'triangle', 'rhyming', 'examples', 'dictionary',  'something',
-'intend', 'practice', 'pictures', 'poems', 'selections', 'elephant',
-'giraffe', 'coffee', 'address', 'evident', 'accord', 'approach', 'establish',
-'straight', 'apparent', 'passage'],     ['traintrack', 'continuing',
-'outstanding', 'appointed', 'earnest', 'convention', 'territory', 'undertake',
+'intend', 'practice', 'pictures', 'poems', 'selections', 'elephant', 'Italy',
+'giraffe', 'coffee', 'installation', 'address', 'evident', 'accord', 'approach', 'establish',
+'straight', 'apparent', 'passage'],     ['available', 'management', 'traintrack', 'continuing',
+'outstanding', 'appointed', 'earnest', 'convention', 'territory', 'undertake', 'hockey', 'soccer',
 'majority', 'attitude', 'manifest', 'resource', 'contempt', 'distinction',
 'inclined', 'attribute', 'disposition', 'bestow', 'corruption', 'crerical'],
 ['ascertain', 'perpetual', 'substancial', 'elaborate', 'conspicuous',
 'proceeding', 'extravagant', 'venerate', 'suffrage', 'intrigue', 'dispatch',
-'railroad', 'undertaking', 'predecessor', 'delicacy'],     ['Alfa', 'Bravo',
+'railroad', 'undertaking', 'predecessor', 'delicacy', 'registration', 'dearborn', 'Ravenswood', 'laundroumat', 'basketball'],     ['Alfa', 'Bravo',
 'Charlie', 'Delta', 'Echo', 'Foxtrot', 'Golf', 'Hotel', 'India', 'Juliett',
 'Kilo', 'Lima', 'Mike', 'November', 'Oscar', 'Papa', 'Quebec', 'Romeo',
 'Sierra', 'Tango', 'Uniform', 'Victor', 'Whiskey', 'X-ray', 'Yankee', 'Zulu'],
 ];
 
-
+console.log(words);
 
 const countingWords = () => {
 	// increase wordCount
@@ -101,37 +103,21 @@ function startRound() {
 	correctWord = 0;
 
 }
+
 function gameOver() {
 	if(wrongAnswer === 3){
 		clearInterval(timer);
 		 $('#wordBox').hide()
 		$('#container').hide()
-	
-	
 		$('audio#pop2')[0].pause()
 		$('audio#pop')[0].play()
 		toggleModal("Game Over", "Restart");
-
 		//add a click listener for the restart button
 		// $("#modal-button").on('click', restartGame)
 	}
 
 }
-// function restartGame() {
-// 			// toggleModal2();
-// 			$('#wordBox').show()
-// 			// setTimer();
-// 			// getWord();
-// 			time = 60;
-// 			wordCount = 0;
-// 			points = 0;
-// 			nextRound = 0;
-// 			correctWord = 0;
-// 			startRound();
-// 			// box.text(word)
-			
 
-// }
 const setTimer = () => {
 	
   	timer = setInterval(() => {
@@ -151,27 +137,19 @@ const setTimer = () => {
 
 	}, 1000);
 }
-// function toggleModal2() {
-// 	// how do I toggle a class in jquery
-//     $(".modal2").toggleClass("show-modal");
-// }
 
-
-// $("#modal-button2").on("click", (event) => {
-// 	event.preventDefault()
-// 	$('audio#pop2')[0].play()
-// 	restartGame();
-// })
-
-
-
-
-// $(".close-button2").on("click", toggleModal2);
 
 function toggleModal(str, txt) {
-
-
 	if(txt === 'Restart'){
+		clearInterval(timer);
+		$('#wordBox').show()
+		$('#container').show()
+		$('#strike').detach()
+		points = 0;
+		nextRound = 0;
+		time = 60;
+		correctWord = 0;
+		getWord();
 		//points, score, whatever
 		// reset your variables 
 	}
@@ -237,35 +215,17 @@ $('#name').on('click', (event) => {
 	$('audio#pop2')[0].play()
 	startRound();
 })
-	
-		// let end = $("<div>Game Over</div>").attr("id", "ending")
-		// end.css({
-		// 	"height": "900px",
-		// 	"font-size": "200px",
-		// 	"text-align": "center",
-		// 	"background-color": "rgba(0, 0, 0, 0.9)"
-		// });
-		// let restart = $('<button>Restart</button>').on('click', (event) => {
-		// 	// reset all your variables
-		// 	event.preventDefault();
-		// 	$('#container').show()
-		// 	$('#ending').remove()
-		// 	text.remove()
-			
-			
-		// 	restartGame();
-			
-		// })
-		// restart.css({
-		// 	"height": "45px",
-		// 	"width": "65px",
-		// 	"padding": "5px", 
-  //   		"border": "2px solid #ccc", 
-  //   		"-webkit-border-radius": "5px",
-  //   		"border-radius": "5px"
-		// })
-		// end.append(restart);
-		// $('body').append(end);
+// function restartGame() {
+// 	// if(nextRound !== 0) {
+// 	// 	toggleModal();
+// 	// }	
+// 	// $('audio#pop2')[0].play()
+// 	nextRound++;
+// 	setTimer();
+// 	console.log('nextround', nextRound, )
+// 	$('#rounds').text('Round: ' + nextRound)
+// 	getWord();
+// 	time = 60;
+// 	correctWord = 0;
 
-
-			
+// }
