@@ -14,8 +14,7 @@ text.css("color: red", "font-size: 45px");
 
 const words = [ 
 
-//  ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k',
-// 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'],
+ // ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'],
 
 ['red', 'bank', 'dessert', 'rug', 'is', 'this', 'and', 'cold', 'total', 'food', 'blue', 'so', 'green',
 'car', 'black', 'purple', 'pink', 'street', 'public', 'pressure', 'orange', 'gray', 'white', 'brown', 'aqua',
@@ -97,7 +96,7 @@ function startRound() {
 	// $('audio#pop2')[0].play()
 	nextRound++;
 	setTimer();
-	console.log('nextround', nextRound, )
+	console.log('nextround', nextRound)
 	$('#rounds').text('Round: ' + nextRound)
 	getWord();
 	time = 60;
@@ -108,7 +107,7 @@ function startRound() {
 function gameOver() {
 	if(wrongAnswer === 3){
 		clearInterval(timer);
-		 $('#wordBox').hide()
+		$('#wordBox').hide()
 		$('#container').hide()
 		$('audio#pop2')[0].pause()
 		$('audio#pop')[0].play()
@@ -122,11 +121,11 @@ function gameOver() {
 const setTimer = () => {
 	
   	timer = setInterval(() => {
-  		console.log(timer+" is this");
+  		// console.log(timer+" is this");
 
 		time--
 		$('#time').text('Time: ' + time)
-		console.log( time + ' timer is running');
+		// console.log( time + ' timer is running');
 
 		if(time === 0){
 
@@ -165,7 +164,7 @@ function toggleModal(str, txt) {
 
 $("#modal-button").on("click", (event) => {
 	event.preventDefault()
-	toggleModal();
+	// toggleModal();
 	startRound();
 })
 
