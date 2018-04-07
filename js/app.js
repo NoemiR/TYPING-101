@@ -112,8 +112,7 @@ function gameOver() {
 		$('audio#pop2')[0].pause()
 		$('audio#pop')[0].play()
 		toggleModal("Game Over", "Restart");
-		//add a click listener for the restart button
-		// $("#modal-button").on('click', restartGame)
+	
 	}
 
 }
@@ -216,17 +215,3 @@ $('#name').on('click', (event) => {
 	$('audio#pop2')[0].play()
 	startRound();
 })
-// function restartGame() {
-// 	// if(nextRound !== 0) {
-// 	// 	toggleModal();
-// 	// }	
-// 	// $('audio#pop2')[0].play()
-// 	nextRound++;
-// 	setTimer();
-// 	console.log('nextround', nextRound, )
-// 	$('#rounds').text('Round: ' + nextRound)
-// 	getWord();
-// 	time = 60;
-// 	correctWord = 0;
-
-// }
